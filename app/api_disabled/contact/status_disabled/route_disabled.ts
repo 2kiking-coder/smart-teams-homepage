@@ -14,14 +14,6 @@ type Item = {
   [k: string]: any;
 };
 
-async function readAll(): Promise<Item[]> {
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    return raw.split("\n").filter(Boolean).map((l) => JSON.parse(l));
-  } catch {
-    return [];
-  }
-}
 
 async function writeAll(items: Item[]) {
   const body = items.map((x) => JSON.stringify(x)).join("\n") + (items.length ? "\n" : "");
