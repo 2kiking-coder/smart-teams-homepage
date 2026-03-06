@@ -9,17 +9,6 @@ const DATA_FILE = path.join(process.cwd(), "contact-submissions.jsonl");
 
 type Item = {
   id: string;
-  createdAt: string;import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
-const DATA_FILE = path.join(process.cwd(), "contact-submissions.jsonl");
-
-type Item = {
-  id: string;
   createdAt: string;
   status?: "pending" | "done";
   [k: string]: any;
