@@ -14,7 +14,7 @@ async function readStatus(): Promise<StatusMap> {
   try {
     const raw = await fs.readFile(STATUS_FILE, "utf-8");
     const obj = JSON.parse(raw);
-    return (obj && typeof obj === "object") ? obj : {};
+    return obj && typeof obj === "object" ? obj : {};
   } catch {
     return {};
   }
@@ -33,23 +33,33 @@ function normalize(v: any): AdminStatus | null {
 }
 
 export async function PATCH(req: Request) {
-  const { updates } = await req.json();
+  try {
+    const { updates } = await req.json();
 
-  if (!updates || typeof updates !== "object") {
-    return NextResponse.json({ ok: false, error: "Invalid payload" }, { status: 400 });
+    if (!updates || typeof updates !== "object") {
+      return NextResponse.json(
+        { ok: false, error: "Invalid payload" },
+        { status: 400 }
+      );
+    }
+
+    const cur = await readStatus();
+
+    for (const [id, st] of Object.entries(updates)) {
+      const ns = normalize(st);
+      if (ns) cur[id] = ns;
+    }
+
+    await writeStatus(cur);
+
+    return NextResponse.json(
+      { ok: true },
+      { headers: { "Cache-Control": "no-store" } }
+    );
+  } catch (e: any) {
+    return NextResponse.json(
+      { ok: false, error: e?.message || "상태 저장 실패" },
+      { status: 500 }
+    );
   }
-
-  const cur = await readStatus();
-
-  for (const [id, st] of Object.entries(updates)) {
-    const ns = normalize(st);
-    if (ns) cur[id] = ns;
-  }
-
-  await writeStatus(cur);
-
-  return NextResponse.json(
-    { ok: true },
-    { headers: { "Cache-Control": "no-store" } }
-  );
 }

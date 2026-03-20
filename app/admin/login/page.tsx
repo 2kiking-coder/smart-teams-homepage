@@ -1,18 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const sp = useSearchParams();
-  const next = sp.get("next") || "/admin/contact";
 
+  const [nextPath, setNextPath] = useState("/admin/contact");
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [err, setErr] = useState("");
 
-  const onSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      const next = url.searchParams.get("next");
+      if (next) setNextPath(next);
+    } catch {
+      setNextPath("/admin/contact");
+    }
+  }, []);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErr("");
 
@@ -22,13 +31,14 @@ export default function AdminLoginPage() {
       body: JSON.stringify({ user, pass }),
     });
 
+    const data = await res.json().catch(() => null);
+
     if (!res.ok) {
-      const t = await res.text().catch(() => "");
-      setErr(t || "로그인 실패");
+      setErr(data?.error || data?.message || "로그인 실패");
       return;
     }
 
-    router.replace(next);
+    router.replace(nextPath);
   };
 
   return (
@@ -38,7 +48,15 @@ export default function AdminLoginPage() {
         <p style={{ color: "#6b7280", marginBottom: 16 }}>관리자 페이지 접근을 위해 로그인하세요.</p>
 
         {err && (
-          <div style={{ background: "#fee2e2", color: "#991b1b", padding: 10, borderRadius: 10, marginBottom: 12 }}>
+          <div
+            style={{
+              background: "#fee2e2",
+              color: "#991b1b",
+              padding: 10,
+              borderRadius: 10,
+              marginBottom: 12,
+            }}
+          >
             {err}
           </div>
         )}

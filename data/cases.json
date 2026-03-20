@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "company": "SK해운",
+    "logo": "/uploads/cases/1773795125362_SK해운.png",
+    "createdAt": "2026-03-18T00:52:05.372Z"
+  },
+  {
+    "id": 2,
+    "company": "SK스페셜티",
+    "logo": "/uploads/cases/1773795148332_SK스페셜티.png",
+    "createdAt": "2026-03-18T00:52:28.338Z"
+  },
+  {
+    "id": 3,
+    "company": "SK마이크로웍스",
+    "logo": "/uploads/cases/1773795170003_SK마이크로웍스.png",
+    "createdAt": "2026-03-18T00:52:50.009Z"
+  },
+  {
+    "id": 4,
+    "company": "남양유업",
+    "logo": "/uploads/cases/1773795193278_남양유업.png",
+    "createdAt": "2026-03-18T00:53:13.283Z"
+  },
+  {
+    "id": 5,
+    "company": "백미당",
+    "logo": "/uploads/cases/1773795219099_백미당.png",
+    "createdAt": "2026-03-18T00:53:39.104Z"
+  },
+  {
+    "id": 6,
+    "company": "스핑크스",
+    "logo": "/uploads/cases/1773797178930_스핑크스.png",
+    "createdAt": "2026-03-18T00:55:04.312Z",
+    "updatedAt": "2026-03-18T01:26:18.937Z"
+  }
+]

@@ -13,9 +13,9 @@ const MODULES: {
   label: string;
   title: string;
   desc: string;
-  image: string; // public/screens/...
+  image: string;
   bullets: string[];
-  color: string; // ✅ 모듈 컬러
+  color: string;
 }[] = [
   {
     key: "approval",
@@ -101,48 +101,51 @@ export default function HomePage() {
       {/* =========================
           1) HERO
          ========================= */}
-      <section className="relative min-h-[720px] w-full overflow-hidden">
+      <section className="relative isolate min-h-[680px] w-full overflow-hidden md:min-h-[720px]">
         <Image
           src="/screens/hero-hex.png"
           alt="Smart Teams Hero"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/35" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#ece8f6]" />
 
-        <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-center px-6 py-16">
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,10,20,0.45),rgba(4,12,24,0.56),rgba(4,12,24,0.76))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.14)_45%,rgba(0,0,0,0.32)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#ece8f6] to-transparent md:h-32" />
+
+        <div className="relative mx-auto flex min-h-[700px] max-w-7xl items-start px-5 pb-14 pt-12 sm:px-6 md:min-h-[720px] md:items-center md:px-8 md:py-16 lg:px-10">
           <div className="grid w-full items-start gap-10 md:grid-cols-12">
             {/* Left copy */}
-            <div className="md:col-span-7 text-white">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-0.5 text-sm text-white/90 backdrop-blur">
+            <div className="pt-8 text-white md:col-span-7 md:pt-0">
+              <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-medium leading-4 text-white/90 backdrop-blur sm:px-4 sm:text-sm">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                전자결재·경비·자원예약을 Microsoft 365 그대로
+                <span className="truncate">전자결재·경비·자원예약을 Microsoft 365 그대로</span>
               </div>
 
-              <h1 className="mt-6 text-5xl font-extrabold leading-tight tracking-tight md:text-6xl">
+              <h1 className="mt-4 text-[34px] font-extrabold leading-[1.06] tracking-[-0.04em] text-white sm:text-[42px] md:mt-6 md:text-6xl">
                 TEAMS 하나로
                 <br />
                 완성되는 업무
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg text-white/85">
-                표준 모듈로 빠르게 구축하고, 운영까지 안정적으로. Microsoft 365/SSO 연동 기반의
-                엔터프라이즈 업무 플랫폼입니다.
+              <p className="mt-5 max-w-[320px] text-[15px] leading-[1.9] text-white/88 sm:max-w-[420px] sm:text-base sm:leading-7 md:mt-6 md:max-w-xl md:text-lg">
+                표준 모듈로 빠르게 구축하고, 운영까지 안정적으로.
+                <br />
+                Microsoft 365/SSO 연동 기반의 엔터프라이즈 업무 플랫폼입니다.
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-3">
+              <div className="mt-6 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap md:mt-10 md:items-center">
                 <Link
                   href="/contact"
-                  className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-extrabold text-slate-950 hover:bg-white/90"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-full bg-white px-6 text-sm font-extrabold text-slate-950 transition hover:bg-white/90 sm:w-auto"
                 >
                   도입 문의하기
                 </Link>
                 <a
                   href="#hero-below"
-                  className="inline-flex rounded-full border border-white/40 bg-transparent px-6 py-3 text-sm font-bold text-white hover:bg-white/10"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-full border border-white/40 bg-transparent px-6 text-sm font-bold text-white transition hover:bg-white/10 sm:w-auto"
                 >
                   서비스 소개 보기
                 </a>
@@ -150,11 +153,11 @@ export default function HomePage() {
             </div>
 
             {/* Right decor */}
-            <div className="relative hidden md:block md:col-span-5">
+            <div className="relative hidden md:col-span-5 md:block">
               <div className="absolute -right-10 -top-12 h-[520px] w-[520px] rounded-full bg-indigo-500/15 blur-3xl" />
               <div className="absolute right-10 top-12 h-24 w-24 rounded-full border border-white/20 bg-white/10 backdrop-blur" />
               <div className="absolute right-44 top-44 h-32 w-32 rounded-full border border-white/20 bg-white/10 backdrop-blur" />
-              <div className="absolute right-24 bottom-10 h-28 w-28 rounded-full border border-white/20 bg-white/10 backdrop-blur" />
+              <div className="absolute bottom-10 right-24 h-28 w-28 rounded-full border border-white/20 bg-white/10 backdrop-blur" />
             </div>
           </div>
         </div>
@@ -166,10 +169,10 @@ export default function HomePage() {
       <section id="hero-below" className="bg-[#ece8f6] py-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
-            <div className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
+            <div className="text-xl font-extrabold leading-snug tracking-tight text-slate-900 md:text-3xl">
               흩어진 업무와 데이터, 치솟는 비용
             </div>
-            <div className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
+            <div className="mt-2 text-xl font-extrabold leading-snug tracking-tight text-slate-900 md:text-3xl">
               <span className="text-[#6d5bd0]">SMART TEAMS</span>가 M365 팀즈 기반의 단일 플랫폼으로
               연결합니다.
             </div>
@@ -192,23 +195,22 @@ export default function HomePage() {
 
       {/* =========================
           3) MODULES
-          ✅ 왼쪽 높이 줄이기: 버튼 2열 grid
-          ✅ 오른쪽 컬러 변경: activeModule.color 사용
          ========================= */}
       <section id="modules" className="bg-white py-14">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 md:grid-cols-12 items-stretch">
+          <div className="grid items-stretch gap-10 md:grid-cols-12">
             {/* Left */}
             <div className="md:col-span-4 md:flex md:flex-col md:justify-center">
               <div className="text-sm font-extrabold text-slate-500">SMART TEAMS 솔루션</div>
 
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                Teams의 솔루션을 통해 높은
+              <h2 className="mt-2 text-[26px] font-extrabold leading-snug tracking-tight text-slate-900 md:text-3xl">
+                Teams의 솔루션을 통해
                 <br />
-                효율성을 추구하세요!
+                높은 효율성을
+                <br />
+                추구하세요!
               </h2>
 
-              {/* ✅ 2열로 변경해서 높이 줄임 */}
               <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:min-h-[260px]">
                 {MODULES.map((m) => {
                   const on = m.key === active;
@@ -216,15 +218,12 @@ export default function HomePage() {
                     <button
                       key={m.key}
                       onClick={() => setActive(m.key)}
-                      className={[
-                        "flex w-full items-center gap-3 rounded-2xl px-4 py-1.5 text-left transition border",
-                        "border-black/10 bg-white hover:bg-slate-50",
-                      ].join(" ")}
+                      className="flex w-full items-center gap-3 rounded-2xl border border-black/10 bg-white px-4 py-1.5 text-left transition hover:bg-slate-50"
                       style={
                         on
                           ? {
                               borderColor: hexToRgba(m.color, 0.35),
-                              backgroundColor: hexToRgba(m.color, 0.10),
+                              backgroundColor: hexToRgba(m.color, 0.1),
                             }
                           : undefined
                       }
@@ -238,7 +237,7 @@ export default function HomePage() {
                       >
                         {m.no}
                       </span>
-                      <div className="font-bold text-slate-900 whitespace-nowrap">{m.label}</div>
+                      <div className="whitespace-nowrap font-bold text-slate-900">{m.label}</div>
                     </button>
                   );
                 })}
@@ -249,11 +248,10 @@ export default function HomePage() {
             <div className="md:col-span-8">
               <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-[0_30px_90px_rgba(0,0,0,0.10)]">
                 <div className="grid md:grid-cols-12">
-                  {/* Center image */}
-                  <div className="md:col-span-8 bg-slate-50 p-4">
-                    <div className="rounded-2xl border border-black/10 bg-white shadow-sm overflow-hidden">
+                  <div className="bg-slate-50 p-4 md:col-span-8">
+                    <div className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
                       <div className="p-4">
-                        <div className="relative w-full aspect-[16/9] rounded-2xl border border-black/10 bg-white overflow-hidden">
+                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-black/10 bg-white">
                           <Image
                             src={activeModule.image}
                             alt={activeModule.title}
@@ -267,9 +265,8 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* ✅ Purple panel → activeModule.color */}
                   <div
-                    className="md:col-span-4 text-white flex flex-col"
+                    className="flex flex-col text-white md:col-span-4"
                     style={{ backgroundColor: activeModule.color }}
                   >
                     <div className="p-7 md:p-8">
@@ -281,7 +278,7 @@ export default function HomePage() {
                         {activeModule.title}
                       </div>
 
-                      <div className="mt-4 text-sm font-semibold text-white/90 leading-relaxed">
+                      <div className="mt-4 text-sm font-semibold leading-relaxed text-white/90">
                         {activeModule.desc}
                       </div>
 
@@ -296,11 +293,11 @@ export default function HomePage() {
 
                       <div className="mt-8">
                         <Link
-  href={`/products/${activeModule.key}`}
-  className="inline-flex items-center justify-center rounded-full border border-white/60 px-9 py-3 text-sm font-extrabold text-white hover:bg-white/10"
->
-  VIEW
-</Link>
+                          href={`/products/${activeModule.key}`}
+                          className="inline-flex items-center justify-center rounded-full border border-white/60 px-9 py-3 text-sm font-extrabold text-white hover:bg-white/10"
+                        >
+                          VIEW
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -315,34 +312,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* =========================
+            {/* =========================
           4) CTA
          ========================= */}
       <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border border-black/10 bg-white p-10 md:flex-row md:items-center">
-            <div>
+          <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border border-black/10 bg-white p-8 md:flex-row md:items-center md:p-10">
+            <div className="w-full md:w-auto">
               <div className="text-sm font-extrabold text-slate-500">Why SMART TEAMS</div>
-              <div className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">
-                엔터프라이즈 운영 기준으로 설계
+
+              <div className="mt-2 text-[28px] font-extrabold leading-tight tracking-tight text-slate-900 md:text-3xl">
+                엔터프라이즈 운영
+                <br />
+                기준으로 설계
               </div>
-              <div className="mt-3 text-slate-600">
-                권한/감사/운영을 기본 내장하고, 모듈별 도입을 단계적으로 확장할 수 있습니다.
+
+              <div className="mt-3 max-w-[320px] text-[15px] leading-8 text-slate-600 md:max-w-xl md:text-base md:leading-7">
+                권한/감사/운영을 기본 내장하고, 모듈별 도입을 단계적으로 확장할 수
+                있습니다.
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="grid w-full grid-cols-2 gap-3 md:flex md:w-auto">
               <Link
                 href="/contact"
-                className="inline-flex rounded-2xl bg-indigo-600 px-6 py-3 text-sm font-extrabold text-white hover:bg-indigo-500"
+                className="inline-flex min-h-[56px] items-center justify-center rounded-2xl bg-indigo-600 px-5 text-sm font-extrabold text-white hover:bg-indigo-500 md:px-6 md:py-3"
               >
                 무료 상담 신청
               </Link>
+
               <a
                 href="https://t2l.smart-teams.co.kr:20003/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex rounded-2xl border border-black/10 bg-white px-6 py-3 text-sm font-extrabold text-slate-900 hover:bg-slate-50"
+                className="inline-flex min-h-[56px] items-center justify-center rounded-2xl border border-black/10 bg-white px-5 text-sm font-extrabold text-slate-900 hover:bg-slate-50 md:px-6 md:py-3"
               >
                 테스트계정
               </a>

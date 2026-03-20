@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
+    "prod": "npm run build && (pm2 restart smart-teams || pm2 start node_modules/next/dist/bin/next --name smart-teams -- start -p 3001) && pm2 save",
     "lint": "eslint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.1.6",
     "@prisma/client": "^6.19.2",
     "better-sqlite3": "^12.6.2",
     "next": "16.1.6",
@@ -19,7 +21,9 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.1",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.24",

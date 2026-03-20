@@ -1,15 +1,7 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-
 const nextConfig: NextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
-  trailingSlash: true,
-  basePath: isProd ? "/smart-teams-homepage" : "",
-  assetPrefix: isProd ? "/smart-teams-homepage/" : "",
+  /* config options here */
 };
 
 export default nextConfig;

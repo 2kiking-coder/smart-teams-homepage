@@ -151,7 +151,7 @@ function ModuleCard({ m }: { m: Module }) {
 
 export default function ProductsPage() {
   return (
-    <section className="mx-auto max-w-6xl px-6 pb-16 pt-10">
+    <section className="mx-auto max-w-6xl px-6 pb-16 pt-28 md:pt-32">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs font-semibold tracking-[0.28em] text-slate-500">SMART TEAMS</p>

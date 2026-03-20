@@ -1,4 +1,3 @@
-// app/api/admin/contact/list/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import fs from "fs";
@@ -48,9 +47,8 @@ export async function GET(req: Request) {
 
     const status = readStatusFile();
 
-    // ✅ Admin 페이지가 기대하는 형태로 변환(items + status)
     const items = rows.map((r) => ({
-      id: String(r.id), // status key로 쓰기 위해 string화
+      id: String(r.id),
       company: r.company ?? "",
       name: r.name ?? "",
       email: r.email ?? "",
@@ -58,7 +56,7 @@ export async function GET(req: Request) {
       message: r.message ?? "",
       createdAt: r.createdAt.toISOString(),
       ip: r.ip ?? "",
-      ua: r.userAgent ?? "", // ✅ admin page는 ua를 씀
+      ua: r.userAgent ?? "",
     }));
 
     return NextResponse.json(

@@ -141,7 +141,7 @@ export default function AdminContactPage() {
   const dirtyCount = Object.keys(dirty).length;
 
   return (
-    <main style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 16px" }}>
+    <main style={{ maxWidth: 1200, margin: "0 auto", padding: "112px 16px 40px" }}>
       <section
         style={{
           border: "1px solid #111827",
@@ -318,6 +318,7 @@ export default function AdminContactPage() {
                             fontWeight: 900,
                             cursor: disabled ? "not-allowed" : "pointer",
                             opacity: disabled ? 0.65 : 1,
+                            whiteSpace: "nowrap",
                           }}
                           title={
                             editMode

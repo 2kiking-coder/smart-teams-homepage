@@ -256,7 +256,7 @@ export default async function ProductDetailPage({
 
   return (
     <div className="bg-white">
-      <section className="mx-auto max-w-6xl px-6 pb-14 pt-10">
+      <section className="mx-auto max-w-6xl px-6 pb-14 pt-28 md:pt-32">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="text-xs font-semibold tracking-[0.28em] text-slate-500">SMART TEAMS</p>

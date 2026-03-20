@@ -7,8 +7,11 @@ export default function ScrollToTop() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // 라우트 변경될 때마다 무조건 최상단
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
